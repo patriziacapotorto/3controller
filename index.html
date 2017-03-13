@@ -15,13 +15,48 @@
 </head>
 
 <body ng-app="app">
+
   <!-- bind the item controller to an element -->
-  <!-- interpolate the data to the view -->
-  <!-- understanding the scope -->
-  <!-- add handles for behaviours -->
-  <!-- create a controller for the player for managing data such as personal and game info -->
+  <div ng-controller="Itemcontroller" class="container text-center">
+    <h1 ng-bind="titolo"></h1>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Immagine</th>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Slots</th>
+                    <th>Elimina</th>
+                </tr>
+            </thead>
+            <!-- popolamento tabella dinamicamente -->
+            <tbody>
+              <tr ng-repeat="arma in listaArmi">
+                  <td><img ng-src="{{arma.image}}" width="100px"></td>
+                  <td ng-bind="arma.nome"></td>
+                  <td ng-bind="arma.descrizione"></td>
+                  <td>Numero di slot: <span ng-bind="arma.slots"></span></td>
+                  <td><button class="btn btn-danger" ng-click="elimina(arma.id,$index)">Elimina</button></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-8 col-xs-12">
+      <div ng-show="listanumeri.length" ng-repeat="numero in listanumeri">
+        <p ng-bind="numero"></p>
+      </div>
+    </div>
+    </div>
+    <!-- chiusura container -->
+</div>
+
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="app.js"></script>
+  <script src="item.controller.js"></script>
   <!-- load the item controller -->
 </body>
 
